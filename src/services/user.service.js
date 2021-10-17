@@ -11,6 +11,18 @@ async function register(user) {
     return res.json();
 }
 
+async function checkAvailabilityUser(username) {
+    const res = await fetch(`${config.apiUrl}/user/available`, {
+        method: 'POST',
+        body: JSON.stringify({username}),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    const isAvailable = await res.json();
+    return isAvailable;
+}
+
 async function login(user) {
     const res = await fetch(config.apiUrl + '/login', {
         method: 'POST',
@@ -22,4 +34,4 @@ async function login(user) {
     return res.json();
 }
 
-export { register, login };
+export { register, checkAvailabilityUser, login };
