@@ -1,24 +1,62 @@
 
 import './App.scss';
 import Register from './Register/Register';
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 import Login from './Login/Login';
-import { createContext, useState } from 'react';
-export const UserContext = createContext();
+import { createContext, useEffect, useState } from 'react';
+import Feed from './Feed/Feed';
+import Header from './Header/Header';
+import { me } from './services/user.service';
+import PostCreate from './PostCreate/PostCreate';
+import Profile from './Profile/Profile';
+import Search from './Search/Search';
+
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('loggedIn'));
+  const history = useHistory();
+
+  const [user, setUser] = useState({});
   
+   useEffect(() => {
+     me()
+       .then(loggedUser => {
+         if (!isLoggedIn(loggedUser)) {
+           history.push('./sign-in');
+           return;
+         }
+         setUser(loggedUser)
+       })
+       .catch(err => console.log(err))
+   }, [history]);
+
+   function isLoggedIn(user) {
+     // return !!user._id;
+     return user.hasOwnProperty('_id');
+   }
+
   return (
-    <UserContext.Provider value={{loggedIn, setLoggedIn}}>
+    <UserContext.Provider value={{user, setUser}}>
       <div className="App">
+        { isLoggedIn(user) && <Header /> }
         <Switch>
+            <Route path="/search">
+              <Search />
+            </Route>
+            <Route path="/profile/:username">
+              <Profile />
+            </Route>
+            <Route path="/post/create">
+              <PostCreate />
+            </Route>
             <Route path="/register">
               <Register />
             </Route>
             <Route path="/sign-in">
               <Login />
+            </Route>
+            <Route exact path="/">
+              <Feed />
             </Route>
           </Switch>
       </div>
@@ -26,4 +64,5 @@ function App() {
   );
 }
 
+export const UserContext = createContext();
 export default App;

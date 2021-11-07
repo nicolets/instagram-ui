@@ -34,4 +34,45 @@ async function login(user) {
     return res.json();
 }
 
-export { register, checkAvailabilityUser, login };
+async function me() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        return {};
+    }
+    const res = await fetch(config.apiUrl + '/user/me', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: token
+        }
+    });
+    return res.json();
+}
+
+async function getUser(username) {
+	const token = localStorage.getItem('token');
+	if (!token) {
+		return {};
+	}
+	const res = await fetch(config.apiUrl + '/user/' + username, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': token
+		}
+	});
+	return res.json();
+}
+
+async function search(query) {
+	const res = await fetch(config.apiUrl + '/search/user/' + query, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': localStorage.getItem('token')
+        }
+    });
+	return res.json();
+}
+
+export { register, checkAvailabilityUser, login, me, getUser, search };

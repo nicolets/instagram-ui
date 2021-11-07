@@ -1,6 +1,6 @@
-.Login {
+.PostCreate {
     width: 300px;
-    margin: 40px;
+    margin: 150px auto;
     padding: 15px;
     border: 1px solid #530540;
     border-radius: 3px;
@@ -17,9 +17,9 @@
       margin-top: 15px;
     }
   
-    input {
+    .post {
       width: 100%;
-      height: 36px;
+      height: 136px;
       line-height: 1em;
       border: 1px solid #c255ef;
       border-radius: 3px;
@@ -32,7 +32,7 @@
       margin-bottom: 5px;
     }
   
-    .btn-login {
+    .btn-postCreate {
       width: 100%;
       height: 36px;
       color: rgb(255, 255, 255);
@@ -54,15 +54,3 @@
       margin-top: 3px;
     }
   }
-
-
-.imgLogin {
-  width: 380px;
-}
-
-.containerLogin {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 100px;
-}

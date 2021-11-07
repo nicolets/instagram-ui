@@ -1,0 +1,57 @@
+.Post {
+    max-width: 500px;
+    height: 600px;
+    border: 2px solid #f1f1f1;
+    margin: 15px 0;
+    border-radius: 3%;
+    overflow: hidden;
+}
+
+.PostDate {
+    padding: 10px;
+    background: #f9f9f9;
+    color: #888888;
+    font-size: 12px;
+}
+
+.postPhoto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 67%;
+    overflow: hidden;
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.postContent {
+    padding: 0 15px;
+    margin-top: 15px;
+    color: #444444;
+    font-size: 14px;
+    line-height: 1.5em;
+}
+
+.likes {
+    padding: 0 10px;
+    color: #444444;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5em;
+}
+
+.PostUser {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px;
+}
+
+.postUserName {
+    margin-left: -160px;
+}
+
