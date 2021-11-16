@@ -1,0 +1,13 @@
+.Search {
+    
+    &__header {
+        margin-left: 50px;
+    }
+   &__input {
+       background: rgb(245, 213, 248);
+   } 
+   &__input:hover {
+       background: rgb(227, 194, 247);
+   }
+
+}

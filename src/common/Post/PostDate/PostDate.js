@@ -1,14 +1,16 @@
 import React from 'react';
 import './PostDate.scss';
+import moment from 'moment';
 
-function PostDate({date}) {
+function PostDate({ date }) {
 
-    const dateObj = new Date(date);
-    const formatted = dateObj.getDate() + '.' + (dateObj.getMonth()+1);
+    const newDate = moment(date).format("MMM Do YYYY");
+    const yearsAgo = moment(date, "YYYYMMDD").fromNow();
 
     return (
         <div>
-            { formatted }
+            <div>{newDate}</div>
+            <div>{yearsAgo}</div>
         </div>
     );
 }

@@ -20,8 +20,6 @@ function Feed(props) {
         getPosts();
     }, []);
 
-    console.log(posts);
-
     return (
         <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center'}} className="Feed">
             <div className='Feed__wrapper'>

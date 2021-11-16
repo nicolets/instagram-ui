@@ -10,8 +10,8 @@ function HeaderProfile(props) {
     const { user } = useContext(UserContext);
 
     return (
-        <Link to={`/profile/${user.username}`}>
-            <div className='HeaderProfile'>
+        <Link to={`/profile/${user.username}`} className="HeaderProfile">
+            <div>
                 <Avatar image={user.image} />
                 { user.username }
             </div>

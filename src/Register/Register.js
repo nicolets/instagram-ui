@@ -13,7 +13,6 @@ function Register() {
         try {
             const user = await register(values);
             history.push('/sign-in');
-            console.log(user);
         } catch (e) {
             console.log(e);
         }

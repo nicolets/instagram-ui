@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { postCreateSchema } from './postCreate.schema';
 import './PostCreate.scss';;
 import { create } from '../services/post.service';
 import { useHistory } from 'react-router-dom';
+// import Cropper from "react-cropper";
+// import "cropperjs/dist/cropper.css";
 
 function PostCreate(props) {
 
     const history = useHistory();
+	// const cropperRef = useRef()
 
     async function submit(values) {
         try {

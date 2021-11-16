@@ -1,0 +1,23 @@
+.SearchResult {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #777;
+    border-radius: 4px;
+    margin: 5px;
+    display: inline-block;
+
+    &:hover {
+        background: rgb(223, 255, 197);
+    }
+
+    &__user {
+        margin: 50px;
+        display: block;
+        transform: translate(20px, 20px);
+        text-decoration: none;
+    }
+
+    &__username {
+        margin-top: 10px;
+    }
+}

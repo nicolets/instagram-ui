@@ -10,6 +10,7 @@ import { me } from './services/user.service';
 import PostCreate from './PostCreate/PostCreate';
 import Profile from './Profile/Profile';
 import Search from './Search/Search';
+import PostPage from './PostPage/PostPage';
 
 
 function App() {
@@ -48,6 +49,9 @@ function App() {
             </Route>
             <Route path="/post/create">
               <PostCreate />
+            </Route>
+            <Route path="/post/:id">
+              <PostPage />
             </Route>
             <Route path="/register">
               <Register />

@@ -1,8 +1,27 @@
-.Profile__posts {
-    margin-left: 70px;
+.Profile {
+
+    &__posts {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px 10px;
+        @media screen and (min-width: 768px) {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+    }
+    
+    &__postHeader {
+        margin-left: 70px;
+        margin-top: 40px;
+        
+    }
 }
 
 .postsH2 {
-    margin-left: 70px;
-    margin-top: 40px;
+    margin-left: 200px;
+    margin-top: 50px;
 }
+
