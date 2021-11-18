@@ -11,6 +11,7 @@ import PostCreate from './PostCreate/PostCreate';
 import Profile from './Profile/Profile';
 import Search from './Search/Search';
 import PostPage from './PostPage/PostPage';
+import PostCreateNew from './PostCreate/PostCreateNew';
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
             </Route>
             <Route path="/post/create">
               <PostCreate />
+               {/* <PostCreateNew />  */}
             </Route>
             <Route path="/post/:id">
               <PostPage />

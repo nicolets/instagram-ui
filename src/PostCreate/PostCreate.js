@@ -1,30 +1,25 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { postCreateSchema } from './postCreate.schema';
 import './PostCreate.scss';;
 import { create } from '../services/post.service';
 import { useHistory } from 'react-router-dom';
-// import Cropper from "react-cropper";
-// import "cropperjs/dist/cropper.css";
 
 function PostCreate(props) {
 
     const history = useHistory();
-	// const cropperRef = useRef()
 
     async function submit(values) {
         try {
-            console.log(values)
-            const post = await create(values);
+            await create(values);
             history.push('/');
-            console.log(post);
         } catch (e) {
             console.log(e);
         }
     }
 
     return (
-<div className="PostCreate">
+        <div className="PostCreate">
             <h1 className="PostCreate__title">Create new post</h1>
             <Formik
                 initialValues={{ body: '', image: null }}

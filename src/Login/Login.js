@@ -4,7 +4,7 @@ import { signInSchema } from './Login.schema';
 import { login, me } from '../services/user.service';
 import { UserContext } from '../App';
 import './Login.scss';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 function Login() {
 
@@ -49,6 +49,11 @@ function Login() {
                         </div>
                         <div className="form-group">
                             <button type="submit" className="btn-login">Sign-in</button>
+                        </div>
+                        <div className="form-group">
+                            <Link to="/register">
+                                Don't have account? Register now!
+                            </Link>
                         </div>
                     </Form>
                 </Formik>

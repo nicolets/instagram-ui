@@ -25,7 +25,7 @@ async function getFeed() {
 async function getPosts(username) {
     const token = localStorage.getItem("token");
     if(!token) return [];
-    const res = await fetch(config.apiUrl + '/post/' + username, {
+    const res = await fetch(config.apiUrl + '/user/' + username + '/post', {
         method: 'GET',
         headers: {
             'Authorization': token
@@ -61,4 +61,25 @@ async function getOne(postId) {
     return res.json();
 }
 
-export { create, getFeed, getPosts, postLike, postUnlike, getOne };
+async function getComments(postId) {
+    const res = await fetch(config.apiUrl + '/post/' + postId + '/comment', {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    });
+    return res.json();
+}
+
+async function createComment(postId, content) {
+    const res = await fetch(config.apiUrl + '/post/' + postId + '/comment', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('token')
+        },
+        body: JSON.stringify({ content })
+    });
+    return res.json();
+}
+
+export { create, getFeed, getPosts, postLike, postUnlike, getOne, getComments, createComment };
