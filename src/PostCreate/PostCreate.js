@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { postCreateSchema } from './postCreate.schema';
-import './PostCreate.scss';;
+import './PostCreate.scss';
 import { create } from '../services/post.service';
 import { useHistory } from 'react-router-dom';
 
