@@ -1,14 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import config from '../../config/index';
-import { createComment, getComments } from '../../services/post.service';
+import { createComment, deletePostApi, getComments } from '../../services/post.service';
 import Avatar from '../Avatar/Avatar';
 import './Post.scss';
 import PostComment from './PostComment/PostComment';
 import PostDate from './PostDate/PostDate';
 import PostLike from './PostLike/PostLike';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
-function Post({ post }) {
+function Post({ post, deletePost }) {
     
     const [comments, setComments] = useState([]);
     const [commentValue, setCommentValue] = useState('');
@@ -32,6 +34,7 @@ function Post({ post }) {
         setCommentValue('')
    }, [post._id, commentValue, comments]);
 
+
     return (
         <div className="Post">
             <div className="PostUser">
@@ -39,8 +42,13 @@ function Post({ post }) {
                 <Link className="postUserName" to={'/profile/' + post.author.username}>
                     <div>{post.author.username}</div>
                 </Link>
-                <div className="PostDate">
-                <PostDate date={post.createdAt} />
+                <div className="dateAndDelete">
+                    <div className="PostDate">
+                    <PostDate date={post.createdAt} />
+                    </div>
+                    <span className="trash">
+                        <FontAwesomeIcon icon={faTrashAlt} onClick={() => deletePost(post._id)} />
+                    </span>
                 </div>
             </div>
             <Link to={'/post/' + post._id}>

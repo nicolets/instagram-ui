@@ -34,6 +34,10 @@ async function login(user) {
     return res.json();
 }
 
+function logout() {
+    localStorage.removeItem('token');
+}
+
 async function me() {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -95,4 +99,4 @@ async function search(query) {
     });
 }
 
-export { register, checkAvailabilityUser, login, me, getUser, search, follow, unfollow };
+export { register, checkAvailabilityUser, login, me, getUser, search, follow, unfollow, logout };

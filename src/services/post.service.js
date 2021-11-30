@@ -82,4 +82,16 @@ async function createComment(postId, content) {
     return res.json();
 }
 
-export { create, getFeed, getPosts, postLike, postUnlike, getOne, getComments, createComment };
+async function deletePostApi(postId) {
+    const token = localStorage.getItem("token");
+    if(!token) return
+    const res = await fetch(config.apiUrl + '/post/delete/' + postId, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': token
+        }
+    });
+    return res;
+}
+
+export { create, getFeed, getPosts, postLike, postUnlike, getOne, getComments, createComment, deletePostApi };
