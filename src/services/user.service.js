@@ -99,4 +99,19 @@ async function search(query) {
     });
 }
 
+// async function updateUserImage(userId, image) {
+//     const form = new FormData();
+//     form.append('profilePic', image);
+
+//     const res = await fetch(config.apiUrl + '/user/' + userId + '/updateProfileImage' , {
+//         method: 'POST',
+//         body: form,
+//         headers: {
+//             'Content-Type': 'application/json',
+// 			'Authorization': localStorage.getItem('token')
+//         }
+//     })
+//     return res
+// }
+
 export { register, checkAvailabilityUser, login, me, getUser, search, follow, unfollow, logout };

@@ -1,13 +1,16 @@
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../App';
 import Avatar from '../../common/Avatar/Avatar';
-import { follow, getUser, unfollow, me as getMyself } from '../../services/user.service';
+import { follow, getUser, unfollow, me as getMyself, updateUserImage } from '../../services/user.service';
+import { ProfileHeaderSchema } from './ProfieHeader.schema';
 import './ProfileHeader.scss';
 
 function ProfileHeader({ username, postNum }) {
 	const { user: me, setUser: setMe } = useContext(UserContext);
 	const [user, setUser] = useState({});
 	const [isFollowing, setIsFollowig] = useState(me?.following?.includes(user._id));
+	const [profileImage, setProfileImage] = useState(null)
 	
 	const handleFollow = () => {
 		follow(username).then(() => {
@@ -39,9 +42,20 @@ function ProfileHeader({ username, postNum }) {
 		initUser();
 	}, [username]);
 
+	// useEffect(() => {
+	// 	console.log('now')
+	// 	updateUserImage(me._id, profileImage);
+	// }, [profileImage])
+
 	return (
+
 		<div className="Profile__header">
-			<div className="Profile__avatar"><Avatar image={user.image} size="lg" /></div>
+			<div>
+				<div className="Profile__avatar"><Avatar image={user.image} size="lg" /></div>			
+				<input type="file" name="image" onChange={e => {
+							setProfileImage(e.currentTarget.files[0])
+				}} />
+			</div>
 			<div>
 				<h2 className="profileName">{user.username}</h2>
 				<p className="postNum">{postNum} posts</p>
