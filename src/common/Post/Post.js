@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import config from '../../config/index';
 import { createComment, deletePostApi, getComments } from '../../services/post.service';
@@ -9,8 +9,11 @@ import PostDate from './PostDate/PostDate';
 import PostLike from './PostLike/PostLike';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { UserContext } from '../../App';
 
 function Post({ post, deletePost }) {
+
+    const { user } = useContext(UserContext);
     
     const [comments, setComments] = useState([]);
     const [commentValue, setCommentValue] = useState('');
@@ -46,9 +49,11 @@ function Post({ post, deletePost }) {
                     <div className="PostDate">
                     <PostDate date={post.createdAt} />
                     </div>
+                    {user.username === post.author.username ? 
                     <span className="trash">
                         <FontAwesomeIcon icon={faTrashAlt} onClick={() => deletePost(post._id)} />
                     </span>
+                    : null}
                 </div>
             </div>
             <Link to={'/post/' + post._id}>

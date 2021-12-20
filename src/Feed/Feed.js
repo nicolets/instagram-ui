@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { getFeed } from '../services/post.service';
 import config from '../config/index';
 import './Feed.scss';
 import Post from '../common/Post/Post';
 import {deletePostApi} from '../services/post.service';
+import { UserContext } from '../App';
 
 function Feed(props) {
     

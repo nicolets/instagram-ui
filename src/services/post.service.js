@@ -82,16 +82,31 @@ async function createComment(postId, content) {
     return res.json();
 }
 
-async function deletePostApi(postId) {
-    const token = localStorage.getItem("token");
-    if(!token) return
-    const res = await fetch(config.apiUrl + '/post/delete/' + postId, {
-        method: 'DELETE',
-        headers: {
-            'Authorization': token
-        }
-    });
-    return res;
+async function deletePostApi(postId){
+    const token = localStorage.getItem("token")
+    if(token) {
+        await fetch(config.apiUrl + '/post/delete/' + postId, {
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'text/plain',
+                'Authorization': token
+            }
+        })
+    } else {
+        return console.log('Post Has Not Been Found');
+    }
 }
+
+// async function deletePostApi(postId) {
+//     const token = localStorage.getItem("token");
+//     if(!token) return
+//     const res = await fetch(config.apiUrl + '/post/delete/' + postId, {
+//         method: 'DELETE',
+//         headers: {
+//             'Authorization': token
+//         }
+//     });
+//     return res;
+// }
 
 export { create, getFeed, getPosts, postLike, postUnlike, getOne, getComments, createComment, deletePostApi };
